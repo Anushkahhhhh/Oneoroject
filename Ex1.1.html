@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+  <h1>Form Validation</h1>  
+  <form>
+    <input type="text" id="Name">
+    <label for="Name" id="Name" name="Name">Name</label> <br>
+
+    <input type="email" id="Email">
+    <p id="textone"></p>
+    <label for="Email" id="Email" name="Email">Email</label><br>
+    <input type="password" id="Password">
+    <p id="texttwo"></p>
+    <label for="Password" id="Password" name="Password">Password</label> <br> <br>
+    <p id="textthree"></p>
+    <input type="button" value="Click" onclick="Validation">
+  </form>
+
+  <script>
+    function Validation() {
+        const name= document.getElementById("Name");
+        const email= document.getElementById("Email");
+        const password= document.getElementById("Password");
+
+        const nameError= document.getElementById("textone");
+        const emailError= document.getElementById("texttwo");
+        const passwordError= document.getElementById("textthree");
+
+        nameError.textContent = '';
+        emailError.textContent = '';
+        passwordError.textContent = '';
+
+        if (name.value.trim()=== '') {
+            nameError.textContent = 'Name is required';
+        }
+        const emailRegex = "/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/";
+        if (email.value.trim()=== '') {
+            nameError.textContent = 'Email is required';
+        } else if (!(emailRegex.test(email.value))){
+            emailError.textContent = 'Invalid email format'
+        }
+    }
+  </script>
+</body>
+</html>
